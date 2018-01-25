@@ -11,34 +11,36 @@ function populateCells(cellsArray = []) {
     store.filledCells = cellsArray;
 }
 
-function checkForNeighbours(currentCell, otherCells) {
-
+function reset() {
+    store.filledCells = [];
 }
 
 function next() {
-    const deadCellIndexes = [];
-
-    store.filledCells.forEach((mainCell, i) => {
-        let totalNeighbours = 0;
-
-        store.filledCells.forEach((otherCell, j) => {
+    store.filledCells = store.filledCells.filter((mainCell) => {
+        const neighbours = store.filledCells.filter((otherCell) => {
             const xDiff = Math.abs(mainCell.x - otherCell.x);
             const yDiff = Math.abs(mainCell.y - otherCell.y);
 
-            if (xDiff + yDiff === 0) return; // if self
+            const isSelf = (xDiff + yDiff === 0);
+            const isNeighbour = (xDiff <= 1 && yDiff <= 1);
 
-            if (xDiff === 1 || yDiff === 1) {
-                totalNeighbours++;
-            }
+            return !isSelf && isNeighbour;
         });
 
-        if (totalNeighbours < 2) {
-            deadCellIndexes.push(i);
-        }
-    });
+        // console.log('mainCell:', mainCell);
+        // console.log('neighbours:', neighbours);
+        // console.log('=============================');
 
-    store.filledCells = store.filledCells.filter((cell, i) => {
-        return deadCellIndexes.indexOf(i) === -1;
+        if (neighbours.length <= 1) {
+            return false;
+        }
+
+
+        if (neighbours.length >= 4) {
+            return false;
+        }
+
+        return true;
     });
 }
 
@@ -46,4 +48,5 @@ module.exports = {
     store,
     populateCells,
     next,
-}
+    reset,
+};
