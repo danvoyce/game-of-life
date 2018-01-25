@@ -1,0 +1,37 @@
+// https://github.com/airbnb/javascript
+
+{
+    "env": {
+        "amd": true,
+        "browser": true,
+        "jest": true
+    },
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+        "classes": true,
+        "jsx": true
+    },
+    "rules": {
+        "import/no-amd": 0,
+        "indent": [2, 4],
+        "quotes": [2, "single", {"allowTemplateLiterals": true}],
+        "max-len": 0,
+        "no-multiple-empty-lines": [1,{ "max": 3 }],
+        "no-nested-ternary": 0,
+        "arrow-body-style": 0,
+        "arrow-parens": ["error", "always"],
+        "no-underscore-dangle": 0,
+        "prefer-const": 0,
+        "react/prefer-stateless-function": 0,
+        "react/jsx-indent": [2,4],
+        "react/jsx-no-bind": 0,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/sort-comp": 0,
+        "react/jsx-prop-new-line": 0,
+        "react/jsx-first-prop-new-line": 0,
+        "react/jsx-indent-props": 0,
+        "no-return-assign": 0,
+        "react/jsx-closing-bracket-location": 0
+    },
+    "extends": "airbnb"
+}
